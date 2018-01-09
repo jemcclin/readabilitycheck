@@ -2,11 +2,16 @@
     "name": "readabilitycheck",
     "displayName": "Readability Check",
     "description": "Check text for readability",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "publisher": "jemcclin",
     "engines": {
         "vscode": "^1.19.0"
     },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/jemcclin/readabilitycheck.git"
+    },
+    "license" : "MIT",
     "categories": [
         "Other"
     ],
@@ -40,7 +45,6 @@
     "dependencies": {
         "dale-chall": "^1.0.2",
         "spache": "^1.1.2",
-        "syllable": "^3.0.0",
-        "vsce": "^1.35.0"
+        "syllable": "^3.0.0"
     }
 }
