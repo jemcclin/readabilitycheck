@@ -40,6 +40,7 @@
     "dependencies": {
         "dale-chall": "^1.0.2",
         "spache": "^1.1.2",
-        "syllable": "^3.0.0"
+        "syllable": "^3.0.0",
+        "vsce": "^1.35.0"
     }
 }

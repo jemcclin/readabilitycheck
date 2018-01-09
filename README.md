@@ -1,4 +1,4 @@
-# ReadabilityCheck README
+# ReadabilityCheck
 
 This extension provides a quick-and-easy display of the readability score of text in plain text or Markdown files when a file is opened or saved, or when the "Check readability" command is run (Ctrl + P, "Check readability").
 
@@ -15,8 +15,10 @@ Currently supported languages include:
 * Plain text files
 * Markdown
 
+Future plans for this extension include highlighting the text based on readability score values (eg: long sentences, difficult paragraphs, challenging words, etc.) to make it easier to see where the text could be revised.
+
 ### Automated Readability Index
-Text is reviewed using the (Automated Readability Index)[https://en.wikipedia.org/wiki/Automated_readability_index] formula, and calculates the approximate US grade level needed to understand the text, based roughly on the length of words in the document and the number of words per sentence.
+Text is reviewed using the [Automated Readability Index](https://en.wikipedia.org/wiki/Automated_readability_index) formula, and calculates the approximate US grade level needed to understand the text, based roughly on the length of words in the document and the number of words per sentence.
 
 The returned score can be from 1 to 14, and will generally represent the grade level required to understand the text. More specifically:
 
