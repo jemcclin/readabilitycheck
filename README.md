@@ -54,6 +54,7 @@ The returned score is an integer above 1, and will generally represent the grade
 Using the [Dale-Chall Readability Formula]([https://en.wikipedia.org/wiki/Dale%E2%80%93Chall_readability_formula), the text is checked against a list of 3,000 words that fourth-grade American students should be able to reliably understand, and any words in the text that are not on that list are marked "difficult." The final score is generated taking into account the percentage of difficult words in the text and the number of long sentences.
 
 The final score can be any number below 9.9, and corresponds roughly to the following grade levels:
+
 | Score | Grade Level |
 | --- | --- |
 | below 4.9 | 4th grade or lower |
@@ -69,6 +70,7 @@ The familiar words list is provided by the [dale-chall](https://github.com/words
 Using the [Flesch Reading Ease](https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests#Flesch_Reading_Ease) formula, the text's readability score is generated in part based on the average number of words in sentences, and the average number of syllables in the words.
 
 The returned score can be from negative numbers to 120. These can be roughly approximated to the following grade levels:
+
 | Reading Ease Score | Grade Level | Notes |
 | --- | --- | --- |
 | 90 - 100+ | 5th grade | Very easy to read |
