@@ -107,7 +107,8 @@ class ReadabilityCheck {
         autoRead = (4.71 * (charCount / wordCount)) + (0.5 * (wordCount / sentenceCount)) - 21.43;
         console.log("Calculated Automatic Readability score: " + autoRead);
 
-        return Math.round(autoRead);
+        // Scores are always rounded up to the nearest integer
+        return Math.ceil(autoRead);
     }
 
     public _getColemanLiau(doc: TextDocument): number {
@@ -149,7 +150,8 @@ class ReadabilityCheck {
         daleChallRead += (difficultWordPercentage > 5) ? 3.6365 : 0;
         console.log("Calculated Dale Chall Readability Formula score: " + daleChallRead);
 
-        return Math.round(daleChallRead);
+        // Return number with up to one decimal point
+        return Number(daleChallRead.toFixed(1));
     }
 
     public _getFlesch(doc: TextDocument): number {
