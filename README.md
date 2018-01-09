@@ -1,6 +1,6 @@
 # ReadabilityCheck
 
-This extension provides a quick-and-easy display of the readability score of text in plain text or Markdown files when a file is opened or saved, or when the "Check readability" command is run (Ctrl + P, "Check readability").
+This extension provides a quick-and-easy display of the readability score of text in plain text or Markdown files when a file is opened or saved, or when the "Check readability" command is run (Ctrl + Shift + P, "Check readability").
 
 ## Features
 Currently supported readability score formulas include:
