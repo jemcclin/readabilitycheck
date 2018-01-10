@@ -124,13 +124,17 @@ If unset, the extension will default to `automated-readability`.
 
 ## Known Issues
 
-None as of yet.
+For heavily-marked up Markdown documents, or documents with a lot of tables/lists, the scores may be in the "difficult" range unnecessarily due to the sentence detection expression not picking up "end of line" as an end of a sentence in cases where there is no terminating punctuation (eg: list entries).
 
 ## Release Notes
 
 ### 1.0.0
 
 Initial release of ReadabilityCheck
+
+### 1.1.0
+
+Add Markdown format stripping to make the wordcount/character counts more accurate, to improve score accuracy.
 
 ## License
 This extension is released under the MIT license.
@@ -139,4 +143,4 @@ This extension references the following packages released under the MIT license:
 * [syllable](https://github.com/words/syllable), developed by [Titus Wormer](http://wooorm.com/)
 * [dale-chall](https://github.com/words/dale-chall), developed by [Titus Wormer](http://wooorm.com/)
 * [sprache](https://github.com/words/sprache), developed by [Titus Wormer](http://wooorm.com/)
-
+* [remove-markdown](https://github.com/stiang/remove-markdown), developed by [Stian Grytøyr](https://github.com/stiang)

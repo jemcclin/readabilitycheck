@@ -52,34 +52,37 @@ class ReadabilityCheck {
             let formula = 'Readability';
             let readability = 0;
 
+            let removeMd = require('remove-markdown');
+            let docContent = removeMd(doc.getText());
+
             switch (configuredFormula) {
                 case 'flesch':
                     formula = 'Flesch Reading Ease';
-                    readability = this._getFlesch(doc);
+                    readability = this._getFlesch(docContent);
                     break;
                 case 'flesch-kincaid':
                     formula = 'Flesch-Kincaid Grade Level';
-                    readability = this._getFleschKincaid(doc);
+                    readability = this._getFleschKincaid(docContent);
                     break;
                 case 'coleman-liau':
                     formula = 'Coleman-Liau Index';
-                    readability = this._getColemanLiau(doc);
+                    readability = this._getColemanLiau(docContent);
                     break;
                 case 'dale-chall':
                     formula = 'Dale-Chall Readability';
-                    readability = this._getDaleChall(doc);
+                    readability = this._getDaleChall(docContent);
                     break;
                 case 'smog':
                     formula = 'SMOG Formula';
-                    readability = this._getSMOG(doc);
+                    readability = this._getSMOG(docContent);
                     break;
                 case 'spache':
                     formula = 'Spache Readability';
-                    readability = this._getSpache(doc);
+                    readability = this._getSpache(docContent);
                     break;
                 default:
                     formula = 'Automated Readability';
-                    readability = this._getAutomatedReadability(doc);
+                    readability = this._getAutomatedReadability(docContent);
                     break;
             }
 
@@ -91,16 +94,16 @@ class ReadabilityCheck {
         }
     }
 
-    public _getAutomatedReadability(doc: TextDocument): number {
+    public _getAutomatedReadability(docContent: string): number {
         let autoRead = 0;
 
-        let sentenceCount = this._getSentenceCount(doc);
+        let sentenceCount = this._getSentenceCount(docContent);
         console.log("Sentence count: " + sentenceCount);
 
-        let wordCount = this._getWordCount(doc);
+        let wordCount = this._getWordCount(docContent);
         console.log("Word count: " + wordCount);
 
-        let charCount = this._getCharacterCount(doc);
+        let charCount = this._getCharacterCount(docContent);
         console.log("Character count: " + charCount);
 
         // Calculate readability based on the Automated Readability Index formula
@@ -111,16 +114,16 @@ class ReadabilityCheck {
         return Math.ceil(autoRead);
     }
 
-    public _getColemanLiau(doc: TextDocument): number {
+    public _getColemanLiau(docContent: string): number {
         let colemanLiauRead = 0;
 
-        let sentenceCount = this._getSentenceCount(doc);
+        let sentenceCount = this._getSentenceCount(docContent);
         console.log("Sentence count: " + sentenceCount);
 
-        let wordCount = this._getWordCount(doc);
+        let wordCount = this._getWordCount(docContent);
         console.log("Word count: " + wordCount);
 
-        let charCount = this._getCharacterCount(doc);
+        let charCount = this._getCharacterCount(docContent);
         console.log("Syllable count: " + charCount);
 
         // Calculate readability based on the Coleman-Liau index formula
@@ -130,16 +133,16 @@ class ReadabilityCheck {
         return Math.round(colemanLiauRead);
     }
 
-    public _getDaleChall(doc: TextDocument): number {
+    public _getDaleChall(docContent: string): number {
         let daleChallRead = 0;
 
-        let sentenceCount = this._getSentenceCount(doc);
+        let sentenceCount = this._getSentenceCount(docContent);
         console.log("Sentence count: " + sentenceCount);
 
-        let wordCount = this._getWordCount(doc);
+        let wordCount = this._getWordCount(docContent);
         console.log("Word count: " + wordCount);
 
-        let difficultWordCount = this._getDifficultWordCount(doc, "dale-chall");
+        let difficultWordCount = this._getDifficultWordCount(docContent, "dale-chall");
         console.log("Syllable count: " + difficultWordCount);
 
         let difficultWordPercentage = (difficultWordCount / wordCount) * 100;
@@ -154,16 +157,16 @@ class ReadabilityCheck {
         return Number(daleChallRead.toFixed(1));
     }
 
-    public _getFlesch(doc: TextDocument): number {
+    public _getFlesch(docContent: string): number {
         let fleschRead = 0;
 
-        let sentenceCount = this._getSentenceCount(doc);
+        let sentenceCount = this._getSentenceCount(docContent);
         console.log("Sentence count: " + sentenceCount);
 
-        let wordCount = this._getWordCount(doc);
+        let wordCount = this._getWordCount(docContent);
         console.log("Word count: " + wordCount);
 
-        let syllableCount = this._getSyllableCount(doc);
+        let syllableCount = this._getSyllableCount(docContent);
         console.log("Syllable count: " + syllableCount);
 
         // Calculate readability based on the Flesch Readability Ease formula
@@ -173,16 +176,16 @@ class ReadabilityCheck {
         return Math.round(fleschRead);
     }
 
-    public _getFleschKincaid(doc: TextDocument): number {
+    public _getFleschKincaid(docContent: string): number {
         let fleschKincaidRead = 0;
 
-        let sentenceCount = this._getSentenceCount(doc);
+        let sentenceCount = this._getSentenceCount(docContent);
         console.log("Sentence count: " + sentenceCount);
 
-        let wordCount = this._getWordCount(doc);
+        let wordCount = this._getWordCount(docContent);
         console.log("Word count: " + wordCount);
 
-        let syllableCount = this._getSyllableCount(doc);
+        let syllableCount = this._getSyllableCount(docContent);
         console.log("Syllable count: " + syllableCount);
 
         // Calculate readability based on the Flesch-Kincaid Grade Level formula
@@ -192,13 +195,13 @@ class ReadabilityCheck {
         return Math.round(fleschKincaidRead);
     }
 
-    public _getSMOG(doc: TextDocument): number {
+    public _getSMOG(docContent: string): number {
         let SMOGRead = 0;
 
-        let sentenceCount = this._getSentenceCount(doc);
+        let sentenceCount = this._getSentenceCount(docContent);
         console.log("Sentence count: " + sentenceCount);
 
-        let polysyllableCount = this._getPolysyllabicWordCount(doc);
+        let polysyllableCount = this._getPolysyllabicWordCount(docContent);
         console.log("Syllable count: " + polysyllableCount);
 
         // Calculate readability based on the Flesch-Kincaid Grade Level formula
@@ -208,16 +211,16 @@ class ReadabilityCheck {
         return Math.round(SMOGRead);
     }
 
-    public _getSpache(doc: TextDocument): number {
+    public _getSpache(docContent: string): number {
         let spacheRead = 0;
 
-        let sentenceCount = this._getSentenceCount(doc);
+        let sentenceCount = this._getSentenceCount(docContent);
         console.log("Sentence count: " + sentenceCount);
 
-        let wordCount = this._getWordCount(doc);
+        let wordCount = this._getWordCount(docContent);
         console.log("Word count: " + wordCount);
 
-        let difficultWordCount = this._getDifficultWordCount(doc, "spache");
+        let difficultWordCount = this._getDifficultWordCount(docContent, "spache");
         console.log("Syllable count: " + difficultWordCount);
 
         // Calculate readability based on the Dale-Chall Readability Formula
@@ -227,10 +230,7 @@ class ReadabilityCheck {
         return Math.round(spacheRead);
     }
 
-    public _getWordCount(doc: TextDocument): number {
-
-        let docContent = doc.getText();
-
+    public _getWordCount(docContent: string): number {
         // Parse out unwanted whitespace so the split is accurate
         docContent = docContent.replace(/(< ([^>]+)<)/g, '').replace(/\s+/g, ' ');
         docContent = docContent.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
@@ -242,10 +242,8 @@ class ReadabilityCheck {
         return wordCount;
     }
     
-    public _getCharacterCount(doc: TextDocument): number {
-        let docContent = doc.getText();
-
-        // Strip all whitespace charactesr
+    public _getCharacterCount(docContent: string): number {
+        // Strip all whitespace characters
         docContent = docContent.replace(/\s+/g, '');
 
         let charCount = 0;
@@ -254,9 +252,7 @@ class ReadabilityCheck {
         return charCount;
     }
 
-    public _getSentenceCount(doc: TextDocument): number {
-        let docContent = doc.getText();
-
+    public _getSentenceCount(docContent: string): number {
         // Approximate sentence count by finding word, followed by punctuation (.?!) and whitespace or end of string
         let sentenceCount = 0;
         sentenceCount = docContent.match(/\w[.?!](\s|$)/g).length;
@@ -265,10 +261,8 @@ class ReadabilityCheck {
         return (sentenceCount > 0 ? sentenceCount : 1);
     }
     
-    public _getSyllableCount(doc: TextDocument): number {
-        var syllable = require('syllable');
-        
-        let docContent = doc.getText();
+    public _getSyllableCount(docContent: string): number {
+        let syllable = require('syllable');        
         let syllableCount = 0;
 
         syllableCount = syllable(docContent);
@@ -277,7 +271,7 @@ class ReadabilityCheck {
     }
 
         
-    public _getDifficultWordCount(doc: TextDocument, vocabulary: string): number {
+    public _getDifficultWordCount(docContent: string, vocabulary: string): number {
         switch (vocabulary) {
             case "dale-chall":
                 var familiarWords = require('dale-chall');
@@ -289,7 +283,6 @@ class ReadabilityCheck {
                 return 0;
         }
         
-        let docContent = doc.getText();
         let difficultWordCount = 0;
         let wordList = Array();
 
@@ -303,10 +296,8 @@ class ReadabilityCheck {
         return difficultWordCount;
     }
 
-    public _getPolysyllabicWordCount(doc: TextDocument): number {
-        var syllable = require('syllable');
-        
-        let docContent = doc.getText();
+    public _getPolysyllabicWordCount(docContent: string): number {
+        let syllable = require('syllable');       
         let polysyllabicWordCount = 0;
         let wordList = Array();
 
