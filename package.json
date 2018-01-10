@@ -22,6 +22,19 @@
     ],
     "main": "./out/extension",
     "contributes": {
+        "configuration":[
+            {
+                "title": "ReadabilityCheck configuration",
+                "properties": {
+                    "readabilitycheck.formula": {
+                        "type": "string",
+                        "default": "automated-readability",
+                        "description": "The formula to use for calculating readability score. \n Valid options: automated-readability, coleman-liau, dale-chall, flesch,flesch-kincaid, smog, spache",
+                        "scope": "resource"
+                    }
+                }
+            }
+        ],
         "commands": [
             {
                 "command": "extension.checkReadability",
