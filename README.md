@@ -142,5 +142,5 @@ This extension is released under the MIT license.
 This extension references the following packages released under the MIT license: 
 * [syllable](https://github.com/words/syllable), developed by [Titus Wormer](http://wooorm.com/)
 * [dale-chall](https://github.com/words/dale-chall), developed by [Titus Wormer](http://wooorm.com/)
-* [sprache](https://github.com/words/sprache), developed by [Titus Wormer](http://wooorm.com/)
+* [spache](https://github.com/words/spache), developed by [Titus Wormer](http://wooorm.com/)
 * [remove-markdown](https://github.com/stiang/remove-markdown), developed by [Stian Grytøyr](https://github.com/stiang)
