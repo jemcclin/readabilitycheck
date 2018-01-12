@@ -2,7 +2,7 @@
     "name": "readabilitycheck",
     "displayName": "Readability Check",
     "description": "Check text for readability",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "publisher": "jemcclin",
     "engines": {
         "vscode": "^1.19.0"
