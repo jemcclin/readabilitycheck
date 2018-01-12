@@ -122,10 +122,6 @@ Score can be any of the below options:
 
 If unset, the extension will default to `automated-readability`.
 
-## Known Issues
-
-For heavily-marked up Markdown documents, or documents with a lot of tables/lists, the scores may be in the "difficult" range unnecessarily due to the sentence detection expression not picking up "end of line" as an end of a sentence in cases where there is no terminating punctuation (eg: list entries).
-
 ## Release Notes
 
 ### 1.0.0
