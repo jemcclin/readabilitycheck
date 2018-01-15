@@ -143,7 +143,7 @@ class ReadabilityCheck {
         console.log("Word count: " + wordCount);
 
         let difficultWordCount = this._getDifficultWordCount(docContent, "dale-chall");
-        console.log("Syllable count: " + difficultWordCount);
+        console.log("Difficult word count: " + difficultWordCount);
 
         let difficultWordPercentage = (difficultWordCount / wordCount) * 100;
 
@@ -221,7 +221,7 @@ class ReadabilityCheck {
         console.log("Word count: " + wordCount);
 
         let difficultWordCount = this._getDifficultWordCount(docContent, "spache");
-        console.log("Syllable count: " + difficultWordCount);
+        console.log("Difficult word count: " + difficultWordCount);
 
         // Calculate readability based on the Dale-Chall Readability Formula
         spacheRead = 0.659 + (0.121 * (wordCount / sentenceCount)) + (0.082 * ((difficultWordCount / wordCount) * 100));
@@ -231,13 +231,8 @@ class ReadabilityCheck {
     }
 
     public _getWordCount(docContent: string): number {
-        // Parse out unwanted whitespace so the split is accurate
-        docContent = docContent.replace(/(< ([^>]+)<)/g, '').replace(/\s+/g, ' ');
-        docContent = docContent.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
         let wordCount = 0;
-        if (docContent != "") {
-            wordCount = docContent.split(" ").length;
-        }
+        wordCount = docContent.match(/\w+/g).length
 
         return wordCount;
     }
@@ -288,10 +283,11 @@ class ReadabilityCheck {
         let difficultWordCount = 0;
         let wordList = Array();
 
-        // Parse out unwanted whitespace so the split is accurate
-        wordList = docContent.match(/\w/g);
+        // Grab words from document
+        wordList = docContent.match(/\w+/g);
 
-        for (let word in wordList) {
+        for (var i = 0; i < wordList.length; i++) {
+            let word = wordList[i];
             difficultWordCount += (familiarWords.indexOf(word) > -1) ? 1 : 0;
         }
 
@@ -303,12 +299,14 @@ class ReadabilityCheck {
         let polysyllabicWordCount = 0;
         let wordList = Array();
 
-        // Parse out unwanted whitespace so the split is accurate
-        wordList = docContent.match(/\w/g);
+        // Grab words from document
+        wordList = docContent.match(/\w+/g);
 
-        for (let word in wordList) {
+        for (var i = 0; i < wordList.length; i++) {
+            let word = wordList[i];
             polysyllabicWordCount += (syllable(word) >= 3 ) ? 1 : 0;
         }
+        console.log("Polysyllabic words: " + polysyllabicWordCount);
 
         return polysyllabicWordCount;
     }
@@ -346,3 +344,4 @@ class ReadabilityCheckController {
         this._readabilityCheck.updateReadability();
     }
 }
+

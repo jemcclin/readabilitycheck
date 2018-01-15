@@ -112,7 +112,7 @@ This extension supports the following settings:
 * `readabilityCheck.formula`: determines which algorithm to use for scoring
 
 Score can be any of the below options:
-* `automated-readability`, for the Automated Readability Index score (default)
+* `automated-readability`, for the Automated Readability Index score
 * `flesch`, for Flesch Readability Ease
 * `flesch-kincaid`, for the Flesch-Kincaid US Grade Level
 * `coleman-liau`, for the Coleman-Liau Index
@@ -131,6 +131,14 @@ Initial release of ReadabilityCheck
 ### 1.1.0
 
 Add Markdown format stripping to make the wordcount/character counts more accurate, to improve score accuracy.
+
+### 1.2.0
+
+Update extension to add user settings options.
+
+### 1.3.0
+
+Fix wordcounts and word list parsing to improve accuracy for Dale-Chall, Coleman-Liau, and SMOG formulas
 
 ## License
 This extension is released under the MIT license.
